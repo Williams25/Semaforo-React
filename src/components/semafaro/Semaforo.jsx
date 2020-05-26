@@ -5,7 +5,7 @@ import './css/index.css'
 
 export default props => {
 
-	const [segundos, setSegundos] = useState(10);
+	const [segundos, setSegundos] = useState(props.TempoVermelho);
 	const [vermelho, setVermelho] = useState('#e91916')
 	const [verde, setVerde] = useState()
 	const [amarelo, setAmarelo] = useState()
@@ -32,15 +32,15 @@ export default props => {
 	if (vermelho === '#e91916' && segundos === -1) {
 		setVerde(verde => verde = '#50c55e')
 		setVermelho()
-		setSegundos(segundos => segundos = 10)
+		setSegundos(segundos => segundos = props.TempoVerde)
 	} else if (verde === '#50c55e' && segundos === -1) {
 		setAmarelo(amarelo => amarelo = '#f7d455')
 		setVerde()
-		setSegundos(segundos => segundos = 5)
+		setSegundos(segundos => segundos = props.TempoAmarelo)
 	} else if (amarelo === '#f7d455' && segundos === -1) {
 		setVermelho(vermelho => vermelho = '#e91916')
 		setAmarelo()
-		setSegundos(segundos => segundos = 10)
+		setSegundos(segundos => segundos = props.TempoVermelho)
 	}
 
 	return (
