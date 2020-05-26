@@ -29,15 +29,15 @@ export default props => {
 		return () => clearInterval(interval);
 	}, [segundos]);
 
-	if (vermelho === '#e91916' && segundos === 0) {
+	if (vermelho === '#e91916' && segundos === -1) {
 		setVerde(verde => verde = '#50c55e')
 		setVermelho()
 		setSegundos(segundos => segundos = 10)
-	} else if (verde === '#50c55e' && segundos === 0) {
+	} else if (verde === '#50c55e' && segundos === -1) {
 		setAmarelo(amarelo => amarelo = '#f7d455')
 		setVerde()
 		setSegundos(segundos => segundos = 5)
-	} else if (amarelo === '#f7d455' && segundos === 0) {
+	} else if (amarelo === '#f7d455' && segundos === -1) {
 		setVermelho(vermelho => vermelho = '#e91916')
 		setAmarelo()
 		setSegundos(segundos => segundos = 10)
