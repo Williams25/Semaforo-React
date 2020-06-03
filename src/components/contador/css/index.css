@@ -1,0 +1,24 @@
+.container {
+  margin-top: 15px;
+  color: #ffffff;
+}
+
+.container button {
+  width: 50px;
+  height: 50px;
+  background: #465a63;
+  padding: 10px;
+  margin: 10px;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-radius: 15px;
+}
+
+.container button:active {
+  background: #465a63aa;
+}
