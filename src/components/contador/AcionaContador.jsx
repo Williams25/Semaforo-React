@@ -3,7 +3,7 @@ import Contador from './Contador'
 import './css/index.css'
 
 export default props => {
-  const [contador, setContador] = useState(props.contador)
+  const [contador, setContador] = useState(props.contador || 0)
 
   const somarContador = (() => {
     setContador(contador => contador += 1)
