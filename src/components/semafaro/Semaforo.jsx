@@ -10,45 +10,35 @@ export default props => {
 	const [verde, setVerde] = useState()
 	const [amarelo, setAmarelo] = useState()
 
-	const styles = {
-		vermelho: {
-			background: vermelho
-		},
-		amarelo: {
-			background: amarelo
-		},
-		verde: {
-			background: verde
-		}
-	}
-
 	useEffect(() => {
 		const interval = setInterval(() => {
-			setSegundos(segundos => segundos -= 1);
+			setSegundos(segundos - 1);
 		}, 1000);
 		return () => clearInterval(interval);
 	}, [segundos]);
 
-	if (vermelho === '#e91916' && segundos === -1) {
-		setVerde(verde => verde = '#50c55e')
-		setVermelho()
-		setSegundos(segundos => segundos = props.TempoVerde)
-	} else if (verde === '#50c55e' && segundos === -1) {
-		setAmarelo(amarelo => amarelo = '#f7d455')
-		setVerde()
-		setSegundos(segundos => segundos = props.TempoAmarelo)
-	} else if (amarelo === '#f7d455' && segundos === -1) {
-		setVermelho(vermelho => vermelho = '#e91916')
-		setAmarelo()
-		setSegundos(segundos => segundos = props.TempoVermelho)
+	if (segundos === 0){
+		if (vermelho === '#e91916') {
+			setVerde('#50c55e')
+			setVermelho()
+			setSegundos(props.TempoVerde)
+		} else if (verde === '#50c55e') {
+			setAmarelo('#f7d455')
+			setVerde()
+			setSegundos(props.TempoAmarelo)
+		} else if (amarelo === '#f7d455') {
+			setVermelho('#e91916')
+			setAmarelo()
+			setSegundos(props.TempoVermelho)
+		}
 	}
 
 	return (
 		<center>
 			<div className="semafaro">
-				<CorSemaforo cor={styles.vermelho} />
-				<CorSemaforo cor={styles.amarelo} />
-				<CorSemaforo cor={styles.verde} />
+				<CorSemaforo cor={vermelho} />
+				<CorSemaforo cor={amarelo} />
+				<CorSemaforo cor={verde} />
 				<Timer timer={segundos} />
 			</div>
 		</center>
