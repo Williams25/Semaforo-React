@@ -27,6 +27,19 @@ export default props => {
 
   const Submit = e => e.preventDefault()
 
+  const cadastrar = () => {
+    if (Salvar({ email, nome })) {
+      setEmail('')
+      setNome('')
+      setValida('Cliente cadastrado com sucesso')
+    } else {
+      setValida('Preencha todos os campos')
+    }
+    setTimeout(() => {
+      setValida('')
+    }, 3000)
+  }
+
   return (
     <div>
       <Header title="Cadastro de cliente" />
@@ -43,23 +56,7 @@ export default props => {
           />
         </Label> <br /> <br />
 
-        <Button title="Cadastrar" type="button" onclick={
-          () => {
-            if (Salvar({ email, nome })) {
-              setEmail('')
-              setNome('')
-              setValida('Cliente cadastrado com sucesso')
-              setTimeout(() => {
-                setValida('')
-              }, 3000)
-            } else {
-              setValida('Preencha todos os campos')
-              setTimeout(() => {
-                setValida('')
-              }, 3000)
-            }
-          }
-        } />
+        <Button title="Cadastrar" type="button" onclick={cadastrar} />
       </Form>
       <span>{valida}</span>
     </div>
